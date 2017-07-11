@@ -175,7 +175,6 @@ def process():
                 		break
                     else:
                         flag = 0
-
                 		soup = soup_factory(response.content)
                 		print soup
                         time.sleep(1000)
@@ -187,7 +186,18 @@ def process():
         if count > 2:
             break
 
+def process_single():
+
+    kind = "0507"
+    region = "01"
+    year = "2016"
+    number = 1
+
+    url = BASE_URL + BASE_CATEGORY.replace("{kind}", kind).replace("{region}", region).replace("{year}", year).replace("{number}", str(number).zfill(6))
+    print url
+    response = requests.get(url)
+    print response
 
 if __name__ == '__main__':
 
-	process()
+	process_single()
